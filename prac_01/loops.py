@@ -21,4 +21,3 @@ print()
 # d
 for star in range(1, number_of_stars + 1, 1):
     print("*" * star)
-
