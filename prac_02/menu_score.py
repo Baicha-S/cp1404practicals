@@ -1,10 +1,14 @@
+"""Menu score program."""
 MENU = "(G)et a valid score\n" \
        "(P)rint result\n" \
        "(S)how stars\n" \
        "(Q)uit"
+EXCELLENT_THRESHOLD = 90
+PASSABLE_THRESHOLD = 50
 
 
 def main():
+    """Display menu."""
     score = ""
     print(MENU)
     choice = input("Choice > ").upper()
@@ -25,6 +29,7 @@ def main():
 
 
 def get_valid_score():
+    """Get user's valid score."""
     score = int(input("Score: "))
     while score <= 0 or score >= 100:
         print("Score must be 0-100")
@@ -33,16 +38,18 @@ def get_valid_score():
 
 
 def determine_score(score):
+    """Determine score based on thresholds."""
     if 0 <= score <= 100:
-        if score >= 90:
+        if score >= EXCELLENT_THRESHOLD:
             return "Excellent"
-        elif score >= 50:
+        elif score >= PASSABLE_THRESHOLD:
             return "Passable"
         else:
             return "Bad"
 
 
 def print_star(score):
+    """Print stars as many as the score."""
     for star in range(0, int(score)):
         return "*" * score
 
