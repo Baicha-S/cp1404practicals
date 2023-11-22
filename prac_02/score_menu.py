@@ -35,8 +35,8 @@ def main():
 
 def get_valid_score():
     """Get user's valid score."""
-    score = int(input("Score: "))
-    while score <= 0 or score >= 100:
+    score = float(input("Score: "))
+    while score <= MINIMUM_SCORE or score >= MAXIMUM_SCORE:
         print("Score must be 0-100")
         score = float(input("Score: "))
     return score
