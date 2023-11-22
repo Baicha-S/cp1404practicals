@@ -1,8 +1,13 @@
-"""Menu score program."""
+"""
+CP1404/CP5632 - Practical
+Menu score program
+"""
 MENU = "(G)et a valid score\n" \
        "(P)rint result\n" \
        "(S)how stars\n" \
        "(Q)uit"
+MINIMUM_SCORE = 0
+MAXIMUM_SCORE = 100
 EXCELLENT_THRESHOLD = 90
 PASSABLE_THRESHOLD = 50
 
@@ -38,8 +43,8 @@ def get_valid_score():
 
 
 def determine_score(score):
-    """Determine score based on thresholds."""
-    if 0 <= score <= 100:
+    """Determine result based on the score."""
+    if MINIMUM_SCORE <= score <= MAXIMUM_SCORE:
         if score >= EXCELLENT_THRESHOLD:
             return "Excellent"
         elif score >= PASSABLE_THRESHOLD:
