@@ -1,7 +1,6 @@
 """
-CP1404 - Programming II
-https://github.com/Baicha-S/cp1404practicals
-password_stars program.
+CP1404/CP5632 - Practical
+Password_stars program to print stars.
 """
 PASSWORD_MINIMUM_LENGTH = 6
 
