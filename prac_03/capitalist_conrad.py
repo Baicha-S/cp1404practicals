@@ -1,6 +1,3 @@
-"""" Capitalist_conrad program"""
-import random
-
 """
 CP1404/CP5632 - Practical
 Capitalist Conrad wants a stock price simulator for a volatile stock.
@@ -10,18 +7,20 @@ a 50% chance that it decreases by 0 to 5%.
 If the price rises above $1000, or falls below $0.01, the program should end.
 The price should be displayed to the nearest cent (e.g. $33.59, not $33.5918232901)
 """
+import random
 
 MAX_INCREASE = 0.175  # 17.5%
 MAX_DECREASE = 0.05  # 5%
-MIN_PRICE = 1
-MAX_PRICE = 100
+MIN_PRICE = 1.0
+MAX_PRICE = 100.0
 INITIAL_PRICE = 10.0
-OUTPUT_FILE = "price.txt"
+OUTPUT_FILE = "stock_price.txt"
 
+out_file = open("stock_price.txt", 'w')
 day_count = 0
 price = INITIAL_PRICE
 print(f"Starting price: ${price:,.2f}")
-out_file = open("price.txt", 'w')
+
 while MIN_PRICE <= price <= MAX_PRICE:
     price_change = 0
     # generate a random integer of 1 or 2
