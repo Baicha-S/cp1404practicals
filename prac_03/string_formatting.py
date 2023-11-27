@@ -39,7 +39,7 @@ print(f"{year} {name} for about ${cost:,.0f}!")
 
 # produce the following right-aligned output (DO NOT use a list):
 for number in range(0, 151, 50):
-    print(f"{number:3}")
+    print(f"{number:^3}")
 #   0
 #  50
 # 100
