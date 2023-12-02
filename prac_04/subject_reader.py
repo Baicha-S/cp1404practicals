@@ -31,4 +31,3 @@ def print_subject(subjects):
 
 
 main()
-
