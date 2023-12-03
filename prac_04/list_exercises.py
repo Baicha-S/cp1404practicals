@@ -1,6 +1,6 @@
 PROMPT_INPUT = 5
 numbers = []
-for i in range(0, PROMPT_INPUT):
+for i in range(PROMPT_INPUT):
     number = int(input("Number: "))
     numbers.append(number)
 
