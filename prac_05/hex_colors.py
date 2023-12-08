@@ -14,3 +14,4 @@ while color != "":
     except KeyError:
         print("Invalid short state")
     color = input("Enter color: ").title()
+
