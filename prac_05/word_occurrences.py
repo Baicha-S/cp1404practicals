@@ -9,4 +9,3 @@ words_to_print = list(words)
 words_to_print.sort()
 for word in words_to_print:
     print(f"{word} : {words[word]}")
-
