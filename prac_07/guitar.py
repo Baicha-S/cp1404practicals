@@ -1,9 +1,5 @@
 """Guitar.py (the class)"""
-# from prac 02
-# name = "Gibson L-5 CES"
-# year = 1923
-# cost = 16035.40
-# print(f"My guitar: {name}, first made in {year}")
+
 
 CURRENT_YEAR = 2023
 VINTAGE_THRESHOLD = 50
