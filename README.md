@@ -27,3 +27,7 @@ have difference naming convention, therefore following
 correct convention gives developers a better understanding
 in the code.
 
+## Links
+Programming pattern page https://github.com/CP1404/Starter/wiki/Programming-Patterns
+CP1404 practical instructions repo https://github.com/CP1404/Practicals
+
