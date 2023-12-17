@@ -4,7 +4,7 @@ Estimate time: 1 hour
 """
 
 from project import Project
-import datetime
+from datetime import datetime
 
 FILENAME = "projects.txt"
 MENU = "-(L)oad Project\n" \
@@ -46,7 +46,8 @@ def load_project(projects):
         in_file.readline()
         for line in in_file:
             parts = line.strip().split("\t")
-            project = Project(parts[0], parts[1], parts[2], float(parts[3]), int(parts[4]))
+            project = Project(parts[0], datetime.strptime(parts[1], "%d/%m/%Y").date(),
+                              parts[2], float(parts[3]), int(parts[4]))
             projects.append(project)
 
 
@@ -76,15 +77,15 @@ def save_project(projects):
 
 
 def filter_project(projects):
-    date_string = input("Show projects that start after date (dd/mm/yy):")  # e.g., "30/9/2022"
-    date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    start_date_string = input("Show projects that start after date (dd/mm/yy):")  # e.g., "30/9/2022"
+    start_date = datetime.strptime(start_date_string, "%d/%m/%Y").date()
 
-    projects.sort()
     for project in projects:
-        print(project)
+        if project.is_greater(start_date):
+            print(project)
 
-    # print(f"That day is/was {date.strftime('%A')}")
-    # print(date.strftime("%d/%m/%Y"))
+    print(f"That day is/was {start_date.strftime('%A')}")
+    print(start_date.strftime("%d/%m/%Y"))
 
 
 def add_project():
