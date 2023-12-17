@@ -30,7 +30,7 @@ def main():
         elif choice == "F":
             filter_project(projects)
         elif choice == "A":
-            add_project()
+            add_project(projects)
         elif choice == "U":
             update_project()
         else:
@@ -77,6 +77,7 @@ def save_project(projects):
 
 
 def filter_project(projects):
+    """Filter the project according to input date."""
     start_date_string = input("Show projects that start after date (dd/mm/yy):")  # e.g., "30/9/2022"
     start_date = datetime.strptime(start_date_string, "%d/%m/%Y").date()
 
@@ -88,8 +89,18 @@ def filter_project(projects):
     print(start_date.strftime("%d/%m/%Y"))
 
 
-def add_project():
-    pass
+def add_project(projects):
+    """Add new project to projects."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy):")
+    priority = int(input("Priority:"))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion_percentage = int(input("Percent complete: "))
+
+    project = Project(name, datetime.strptime(start_date, "%d/%m/%Y").date(),
+                      priority, cost_estimate, completion_percentage)
+    projects.append(project)
 
 
 def update_project():
