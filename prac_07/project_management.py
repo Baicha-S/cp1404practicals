@@ -1,12 +1,12 @@
 """
 Project Management Program.
 Estimate time: 1 hour
+Actual time: 4 hour
 """
 
 from project import Project
 from datetime import datetime
 
-FILENAME = "projects.txt"
 MENU = "-(L)oad Project\n" \
        "-(S)ave Project\n" \
        "-(D)isplay Project\n" \
@@ -42,13 +42,16 @@ def main():
 def load_project(projects):
     """Read the file."""
     filename_to_load = input("Project filename to load: ")
-    with open(filename_to_load, 'r') as in_file:
-        in_file.readline()
-        for line in in_file:
-            parts = line.strip().split("\t")
-            project = Project(parts[0], datetime.strptime(parts[1], "%d/%m/%Y").date(),
-                              parts[2], float(parts[3]), int(parts[4]))
-            projects.append(project)
+    try:
+        with open(filename_to_load, 'r') as in_file:
+            in_file.readline()
+            for line in in_file:
+                parts = line.strip().split("\t")
+                project = Project(parts[0], datetime.strptime(parts[1], "%d/%m/%Y").date(),
+                                  parts[2], float(parts[3]), int(parts[4]))
+                projects.append(project)
+    except FileNotFoundError:
+        print(f"There is no {filename_to_load} in the directory.")
 
 
 def display_project(projects):
@@ -79,29 +82,35 @@ def save_project(projects):
 
 def filter_project(projects):
     """Filter the project according to input date."""
-    start_date_string = input("Show projects that start after date (dd/mm/yy):")  # e.g., "30/9/2022"
-    start_date = datetime.strptime(start_date_string, "%d/%m/%Y").date()
+    try:
+        start_date_string = input("Show projects that start after date (dd/mm/yy):")  # e.g., "30/9/2022"
+        start_date = datetime.strptime(start_date_string, "%d/%m/%Y").date()
 
-    for project in projects:
-        if project.is_greater(start_date):
-            print(project)
+        for project in projects:
+            if project.is_greater(start_date):
+                print(project)
 
-    print(f"That day is/was {start_date.strftime('%A')}")
-    print(start_date.strftime("%d/%m/%Y"))
+        print(f"That day is/was {start_date.strftime('%A')}")
+        print(start_date.strftime("%d/%m/%Y"))
+    except ValueError:
+        print("Invalid Input")
 
 
 def add_project(projects):
     """Add new project to projects."""
     print("Let's add a new project")
-    name = input("Name: ")
-    start_date = input("Start date (dd/mm/yy):")
-    priority = int(input("Priority:"))
-    cost_estimate = float(input("Cost estimate: $"))
-    completion_percentage = int(input("Percent complete: "))
+    try:
+        name = input("Name: ")
+        start_date = input("Start date (dd/mm/yy):")
+        priority = int(input("Priority:"))
+        cost_estimate = float(input("Cost estimate: $"))
+        completion_percentage = int(input("Percent complete: "))
 
-    project = Project(name, datetime.strptime(start_date, "%d/%m/%Y").date(),
-                      priority, cost_estimate, completion_percentage)
-    projects.append(project)
+        project = Project(name, datetime.strptime(start_date, "%d/%m/%Y").date(),
+                          priority, cost_estimate, completion_percentage)
+        projects.append(project)
+    except ValueError:
+        print("Invalid Input")
 
 
 def update_project(projects):
@@ -110,6 +119,10 @@ def update_project(projects):
         print(index, project)
 
     project_choice = int(input("Project choice: "))  # input is index.
+    while project_choice < 0 or project_choice > len(projects):
+        print("Invalid choice.")
+        project_choice = int(input("Project choice: "))
+
     print(projects[project_choice])
 
     for index, project in enumerate(projects):  # loop 2nd time to catch choice.
