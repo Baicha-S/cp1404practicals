@@ -7,12 +7,15 @@ Actual time: 4 hour
 from project import Project
 from datetime import datetime
 
-MENU = "-(L)oad Project\n" \
-       "-(S)ave Project\n" \
-       "-(D)isplay Project\n" \
-       "-(F)ilter projects by dates\n" \
-       "-(A)dd new project\n" \
-       "-(U)pdate project"
+
+MENU = """
+-(L)oad Project
+-(S)ave Project
+-(D)isplay Project
+-(F)ilter projects by dates
+-(A)dd new project
+-(U)pdate project
+"""
 
 
 def main():
