@@ -32,7 +32,7 @@ def main():
         elif choice == "A":
             add_project(projects)
         elif choice == "U":
-            update_project()
+            update_project(projects)
         else:
             print("Invalid choice.")
         choice = input(">>> ").upper()
@@ -53,6 +53,7 @@ def load_project(projects):
 
 def display_project(projects):
     """Display projects according to completion."""
+    projects.sort()
     # for project in projects:
     #     print(project.completion_percentage)
     print("Incomplete projects: ")
@@ -103,8 +104,21 @@ def add_project(projects):
     projects.append(project)
 
 
-def update_project():
-    pass
+def update_project(projects):
+    """Update project data."""
+    for index, project in enumerate(projects):  # loop first time to display index.
+        print(index, project)
+
+    project_choice = int(input("Project choice: "))  # input is index.
+    print(projects[project_choice])
+
+    for index, project in enumerate(projects):  # loop 2nd time to catch choice.
+        if project_choice == index:
+            new_percentage = int(input("New percentage: "))
+            new_priority = input("Priority: ")
+
+            project.completion_percentage = new_percentage
+            project.priority = new_priority
 
 
 main()
